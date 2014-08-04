@@ -214,11 +214,18 @@
         this.player_.controls(false);
       } else if(typeof this.player_.poster() === 'undefined') {
         // Don't use player.poster(), it will fail here because the tech is still null in constructor
-        setTimeout(function() {
-          var posterEl = self.playerEl_.querySelectorAll('.vjs-poster')[0];
-          posterEl.style.backgroundImage = 'url(https://img.youtube.com/vi/' + self.videoId + '/0.jpg)';
-          posterEl.style.display = '';
-        }, 100);
+
+        /* 
+
+        JW - HACK 8/3: FORCING DEFAULT YOUTUBE BUTTON TO DISPLAY
+
+        */
+
+        // setTimeout(function() {
+        //   var posterEl = self.playerEl_.querySelectorAll('.vjs-poster')[0];
+        //   posterEl.style.backgroundImage = 'url(https://img.youtube.com/vi/' + self.videoId + '/0.jpg)';
+        //   posterEl.style.display = '';
+        // }, 100);
       }
 
       this.bindedWaiting = function() {
