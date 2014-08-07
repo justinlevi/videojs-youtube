@@ -160,8 +160,10 @@
     }
   });
 
+  /* revising this based on this article http://www.reelseo.com/remove-youtube-logo/ */
   videojs.Youtube.prototype.updateIframeSrc = function() {
     var params = {
+      modestbranding: 1,
       enablejsapi: 1,
       /*jshint -W106 */
       iv_load_policy: 3,
@@ -172,8 +174,7 @@
       controls: (this.player_.options()['ytcontrols']) ? 1 : 0,
       html5: (this.player_.options()['forceHTML5']) ? 1 : null,
       playsinline: (this.player_.options()['playsInline']) ? 1 : 0,
-      showinfo: 0,
-      modestbranding: 1,
+      /*showinfo: 0,*/
       rel: 0,
       autoplay: (this.playOnReady) ? 1 : 0,
       loop: (this.player_.options()['loop']) ? 1 : 0,
@@ -212,7 +213,7 @@
       if(this.player_.options()['ytcontrols']) {
         // Disable the video.js controls if we use the YouTube controls
         this.player_.controls(false);
-      } else if(typeof this.player_.poster() === 'undefined') {
+      } //else if(typeof this.player_.poster() === 'undefined') {
         // Don't use player.poster(), it will fail here because the tech is still null in constructor
 
         /* 
@@ -226,7 +227,7 @@
         //   posterEl.style.backgroundImage = 'url(https://img.youtube.com/vi/' + self.videoId + '/0.jpg)';
         //   posterEl.style.display = '';
         // }, 100);
-      }
+      //}
 
       this.bindedWaiting = function() {
         self.onWaiting();
